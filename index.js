@@ -760,6 +760,8 @@ bot.action("page3", async (ctx) => {
 ╭───⊱( 🦄 ) Tools° - Menu
 │⬡ /csessions
 │╰┈➤ Retrieving Sessions 
+│⬡ /tofigure
+│╰┈➤ Memper Hd Foto
 │⬡ /cekbio
 │╰┈➤ Mengecek Nomor Whatsapp Terdaftar/Ber Bio
 │⬡ /sendbokep
@@ -1838,6 +1840,35 @@ bot.command("restart", async (ctx) => {
   }, 8000);
 
   setTimeout(() => process.exit(0), 5000);
+});
+
+bot.command("tofigure", async (ctx) => {
+  const userId = ctx.from.id;
+  const message = ctx.message;
+  const photo = message.photo || (message.reply_to_message && message.reply_to_message.photo);
+
+  if (!photo) {
+    return ctx.reply("❌ Silahkan kirim foto dengan caption /tofigure atau balas (reply) sebuah foto dengan perintah /tofigure");
+  }
+
+  try {
+    await ctx.reply("⏳ Sedang memproses foto burik loeh...");
+
+    const fileId = photo[photo.length - 1].file_id;
+    const fileLink = await ctx.telegram.getFileLink(fileId);
+
+    const apiUrl = `https://api.nekolabs.web.id/style.changer/figure?imageUrl=${encodeURIComponent(fileLink.href)}`;
+    
+    await ctx.replyWithPhoto(apiUrl, {
+      caption: `✅ TO FIGURE SUCCES BY VELTRIX (🦋)`,
+      parse_mode: "markdown",
+      reply_to_message_id: message.message_id
+    });
+
+  } catch (error) {
+    console.error(chalk.red("Error ToFigure:"), error);
+    ctx.reply("❌ Gagal memproses gambar!.");
+  }
 });
 
 bot.command("getcode", checkOwnerOrAdmin, async (ctx) => {
