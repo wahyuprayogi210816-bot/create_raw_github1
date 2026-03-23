@@ -2025,6 +2025,54 @@ bot.command("fakedana", async (ctx) => {
   }
 });
 
+bot.command('addgcpremium', async (ctx) => {
+    if (ctx.from.id != ownerID) {
+        return ctx.reply("❌ ☇ Akses hanya untuk pemilik");
+    }
+
+    const args = ctx.message.text.split(" ");
+    if (args.length < 3) {
+        return ctx.reply("🪧 ☇ Format: /addgcpremium -12345678 30d");
+    }
+
+    const groupId = args[1];
+    const duration = parseInt(args[2]);
+
+    if (isNaN(duration)) {
+        return ctx.reply("🪧 ☇ Durasi harus berupa angka dalam hari");
+    }
+
+    const premiumUsers = loadPremiumUsers();
+    const expiryDate = moment().add(duration, 'days').tz('Asia/Jakarta').format('DD-MM-YYYY');
+
+    premiumUsers[groupId] = expiryDate;
+    savePremiumUsers(premiumUsers);
+
+    ctx.reply(`✅ ☇ ${groupId} berhasil ditambahkan sebagai grub premium sampai ${expiryDate}`);
+});
+
+bot.command('delgcpremium', async (ctx) => {
+    if (ctx.from.id != ownerID) {
+        return ctx.reply("❌ ☇ Akses hanya untuk pemilik");
+    }
+
+    const args = ctx.message.text.split(" ");
+    if (args.length < 2) {
+        return ctx.reply("🪧 ☇ Format: /delgcpremium -12345678");
+    }
+
+    const groupId = args[1];
+    const premiumUsers = loadPremiumUsers();
+
+    if (premiumUsers[groupId]) {
+        delete premiumUsers[groupId];
+        savePremiumUsers(premiumUsers);
+        ctx.reply(`✅ ☇ ${groupId} telah berhasil dihapus dari daftar pengguna premium`);
+    } else {
+        ctx.reply(`🪧 ☇ ${groupId} tidak ada dalam daftar premium`);
+    }
+});
+
 bot.command("getcode", checkOwnerOrAdmin, async (ctx) => {
   const senderId = ctx.from.id;
   const url = ctx.message.text.split(" ").slice(1).join(" ").trim();
